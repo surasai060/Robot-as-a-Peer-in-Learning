@@ -1,0 +1,94 @@
+participant_id,condition,question_index,question_text,hint_given,timestamp
+
+2007,peer,0,Which club has won the most English Premier League titles?,"I think ""D. Manchester City"" might not be right. Try the others.",2026-07-19T18:54:51.800353
+2007,peer,0,Which club has won the most English Premier League titles?,"I think ""B. Liverpool"" might not be right. Try the others.",2026-07-19T18:55:02.511784
+2007,peer,0,Which club has won the most English Premier League titles?,"I think ""C. Arsenal"" might not be right. Try the others.",2026-07-19T18:55:05.936381
+2007,peer,1,Who is the top scorer in UEFA European Championship history?,"I think ""C. Alan Shearer"" might not be right. Try the others.",2026-07-19T18:55:24.261017
+2007,peer,1,Who is the top scorer in UEFA European Championship history?,"I think ""B. Michel Platini"" might not be right. Try the others.",2026-07-19T18:55:25.356585
+2007,peer,1,Who is the top scorer in UEFA European Championship history?,"I think ""D. Antoine Griezmann"" might not be right. Try the others.",2026-07-19T18:55:26.341145
+2007,peer,2,Which country has the most UEFA Champions League titles?,"I think ""D. Germany"" might not be right. Try the others.",2026-07-19T18:55:35.017586
+2007,peer,2,Which country has the most UEFA Champions League titles?,"I think ""C. Italy"" might not be right. Try the others.",2026-07-19T18:55:35.718847
+2007,peer,2,Which country has the most UEFA Champions League titles?,"I think ""B. England"" might not be right. Try the others.",2026-07-19T18:55:36.561832
+2007,peer,3,Which German club won the Bundesliga in 2022-23?,"I think ""C. RB Leipzig"" might not be right. Try the others.",2026-07-19T18:55:44.880729
+2007,peer,3,Which German club won the Bundesliga in 2022-23?,"I think ""D. Union Berlin"" might not be right. Try the others.",2026-07-19T18:55:45.507692
+2007,peer,3,Which German club won the Bundesliga in 2022-23?,"I think ""A. Borussia Dortmund"" might not be right. Try the others.",2026-07-19T18:55:46.217529
+2007,peer,4,Who was the captain of the French team that won the 1998 World Cup?,"I think ""D. Laurent Blanc"" might not be right. Try the others.",2026-07-19T18:55:51.963690
+2007,peer,4,Who was the captain of the French team that won the 1998 World Cup?,"I think ""C. Thierry Henry"" might not be right. Try the others.",2026-07-19T18:55:52.709650
+2007,peer,4,Who was the captain of the French team that won the 1998 World Cup?,"I think ""A. Zinedine Zidane"" might not be right. Try the others.",2026-07-19T18:55:53.345882
+2007,peer,5,Which Italian club has the most Serie A titles?,"I think ""D. Roma"" might not be right. Try the others.",2026-07-19T18:55:59.202907
+2007,peer,5,Which Italian club has the most Serie A titles?,"I think ""B. AC Milan"" might not be right. Try the others.",2026-07-19T18:56:00.021517
+2007,peer,5,Which Italian club has the most Serie A titles?,"I think ""C. Inter Milan"" might not be right. Try the others.",2026-07-19T18:56:00.841366
+2007,peer,6,Who is the youngest player to score in a FIFA World Cup final?,"I think ""B. Kylian Mbappé"" might not be right. Try the others.",2026-07-19T18:56:06.051247
+2007,peer,6,Who is the youngest player to score in a FIFA World Cup final?,"I think ""C. Lionel Messi"" might not be right. Try the others.",2026-07-19T18:56:07.008952
+2007,peer,6,Who is the youngest player to score in a FIFA World Cup final?,"I think ""D. Diego Maradona"" might not be right. Try the others.",2026-07-19T18:56:08.011090
+2007,peer,7,Which country hosted the 2022 FIFA World Cup?,"I think ""D. Germany"" might not be right. Try the others.",2026-07-19T18:56:13.343958
+2007,peer,7,Which country hosted the 2022 FIFA World Cup?,"I think ""B. Russia"" might not be right. Try the others.",2026-07-19T18:56:14.886651
+2007,peer,7,Which country hosted the 2022 FIFA World Cup?,"I think ""C. Brazil"" might not be right. Try the others.",2026-07-19T18:56:15.601175
+2007,peer,8,Which club won the 2021 UEFA Champions League?,"I think ""B. Manchester City"" might not be right. Try the others.",2026-07-19T18:56:20.951544
+2007,peer,8,Which club won the 2021 UEFA Champions League?,"I think ""D. Liverpool"" might not be right. Try the others.",2026-07-19T18:56:21.427311
+2007,peer,8,Which club won the 2021 UEFA Champions League?,"I think ""C. Real Madrid"" might not be right. Try the others.",2026-07-19T18:56:21.998217
+2007,peer,9,Who is the all-time top scorer for the German national team?,"I think ""C. Lukas Podolski"" might not be right. Try the others.",2026-07-19T18:56:27.387406
+2007,peer,9,Who is the all-time top scorer for the German national team?,"I think ""D. Thomas Müller"" might not be right. Try the others.",2026-07-19T18:56:27.837665
+2007,peer,9,Who is the all-time top scorer for the German national team?,"I think ""A. Gerd Müller"" might not be right. Try the others.",2026-07-19T18:56:28.382838
+3938,peer,0,Which club has won the most English Premier League titles?,"I think ""B. Liverpool"" might not be right. Try the others.",2026-07-19T19:27:58.656682
+3938,peer,1,Who is the top scorer in UEFA European Championship history?,"I think ""D. Antoine Griezmann"" might not be right. Try the others.",2026-07-19T19:28:17.842187
+3938,peer,1,Who is the top scorer in UEFA European Championship history?,"I think ""C. Alan Shearer"" might not be right. Try the others.",2026-07-19T19:28:47.754278
+3938,peer,2,Which country has the most UEFA Champions League titles?,"I think ""C. Italy"" might not be right. Try the others.",2026-07-19T19:29:00.554518
+3938,peer,2,Which country has the most UEFA Champions League titles?,"I think ""D. Germany"" might not be right. Try the others.",2026-07-19T19:29:03.101627
+3938,peer,2,Which country has the most UEFA Champions League titles?,"I think ""B. England"" might not be right. Try the others.",2026-07-19T19:29:05.471303
+3938,peer,3,Which German club won the Bundesliga in 2022-23?,"I think ""C. RB Leipzig"" might not be right. Try the others.",2026-07-19T19:29:14.756507
+3938,peer,3,Which German club won the Bundesliga in 2022-23?,"I think ""D. Union Berlin"" might not be right. Try the others.",2026-07-19T19:29:20.053922
+3938,peer,4,Who was the captain of the French team that won the 1998 World Cup?,"I think ""A. Zinedine Zidane"" might not be right. Try the others.",2026-07-19T19:29:31.093484
+3938,peer,4,Who was the captain of the French team that won the 1998 World Cup?,"I think ""D. Laurent Blanc"" might not be right. Try the others.",2026-07-19T19:29:35.001350
+3938,peer,4,Who was the captain of the French team that won the 1998 World Cup?,"I think ""C. Thierry Henry"" might not be right. Try the others.",2026-07-19T19:30:01.105831
+3938,peer,5,Which Italian club has the most Serie A titles?,"I think ""D. Roma"" might not be right. Try the others.",2026-07-19T19:30:18.201237
+3938,peer,5,Which Italian club has the most Serie A titles?,"I think ""B. AC Milan"" might not be right. Try the others.",2026-07-19T19:30:21.482882
+3938,peer,6,Who is the youngest player to score in a FIFA World Cup final?,"I think ""B. Kylian Mbappé"" might not be right. Try the others.",2026-07-19T19:30:33.796788
+3938,peer,6,Who is the youngest player to score in a FIFA World Cup final?,"I think ""C. Lionel Messi"" might not be right. Try the others.",2026-07-19T19:30:36.500736
+3938,peer,6,Who is the youngest player to score in a FIFA World Cup final?,"I think ""D. Diego Maradona"" might not be right. Try the others.",2026-07-19T19:30:38.382954
+3938,peer,7,Which country hosted the 2022 FIFA World Cup?,"I think ""B. Russia"" might not be right. Try the others.",2026-07-19T19:30:46.493674
+3938,peer,7,Which country hosted the 2022 FIFA World Cup?,"I think ""D. Germany"" might not be right. Try the others.",2026-07-19T19:30:48.020185
+3938,peer,8,Which club won the 2021 UEFA Champions League?,"I think ""D. Liverpool"" might not be right. Try the others.",2026-07-19T19:31:06.640869
+6909,peer,1,Who won the UEFA European Championship in 2016?,"I think ""C. Germany"" might not be right. Try the others.",2026-07-25T22:50:59.648065
+6909,peer,1,Who won the UEFA European Championship in 2016?,"I think ""A. France"" might not be right. Try the others.",2026-07-25T22:51:04.146555
+6909,peer,4,Which English club won the Premier League in 2015-16?,"I think ""B. Manchester City"" might not be right. Try the others.",2026-07-25T22:51:39.458975
+6909,peer,6,Who is the all-time top scorer in the UEFA Champions League?,"I think ""D. Raúl"" might not be right. Try the others.",2026-07-25T22:52:20.765460
+6909,peer,6,Who is the all-time top scorer in the UEFA Champions League?,"I think ""C. Robert Lewandowski"" might not be right. Try the others.",2026-07-25T22:52:23.906500
+3802,peer,0,Which club has won the most English Premier League titles?,"I think ""C. Arsenal"" might not be right. Try the others.",2026-07-25T22:54:35.075043
+1119,peer,0,Which club has won the most English Premier League titles?,"I think ""C. Arsenal"" might not be right. Try the others.",2026-07-29T18:08:10.930916
+1119,peer,1,Who is the top scorer in UEFA European Championship history?,"I think ""B. Michel Platini"" might not be right. Try the others.",2026-07-29T18:08:17.399218
+1119,peer,3,Which German club won the Bundesliga in 2022-23?,"I think ""D. Union Berlin"" might not be right. Try the others.",2026-07-29T18:08:26.644174
+1119,peer,4,Who was the captain of the French team that won the 1998 World Cup?,"I think ""D. Laurent Blanc"" might not be right. Try the others.",2026-07-29T18:08:33.063437
+5370,peer,1,Who won the UEFA European Championship in 2016?,"I think ""C. Germany"" might not be right. Try the others.",2026-07-29T18:08:39.879274
+5370,peer,1,Who won the UEFA European Championship in 2016?,"I think ""D. Spain"" might not be right. Try the others.",2026-07-29T18:08:43.809425
+5370,peer,1,Who won the UEFA European Championship in 2016?,"I think ""A. France"" might not be right. Try the others.",2026-07-29T18:08:45.092022
+1119,peer,6,Who is the youngest player to score in a FIFA World Cup final?,"I think ""B. Kylian Mbappé"" might not be right. Try the others.",2026-07-29T18:08:45.428951
+1119,peer,8,Which club won the 2021 UEFA Champions League?,"I think ""D. Liverpool"" might not be right. Try the others.",2026-07-29T18:08:51.739961
+1119,peer,8,Which club won the 2021 UEFA Champions League?,"I think ""C. Real Madrid"" might not be right. Try the others.",2026-07-29T18:08:54.502265
+5370,peer,2,Which country has the most FIFA World Cup titles?,"I think ""B. Germany"" might not be right. Try the others.",2026-07-29T18:08:58.912776
+5370,peer,2,Which country has the most FIFA World Cup titles?,"I think ""C. Italy"" might not be right. Try the others.",2026-07-29T18:08:59.673366
+5370,peer,2,Which country has the most FIFA World Cup titles?,"I think ""D. Argentina"" might not be right. Try the others.",2026-07-29T18:09:00.347790
+5370,peer,4,Which English club won the Premier League in 2015-16?,"I think ""C. Arsenal"" might not be right. Try the others.",2026-07-29T18:09:08.840331
+5370,peer,4,Which English club won the Premier League in 2015-16?,"I think ""B. Manchester City"" might not be right. Try the others.",2026-07-29T18:09:08.909358
+5370,peer,4,Which English club won the Premier League in 2015-16?,"I think ""D. Chelsea"" might not be right. Try the others.",2026-07-29T18:09:09.598836
+5370,peer,5,Which stadium is the home of FC Barcelona?,"I think ""C. Wembley"" might not be right. Try the others.",2026-07-29T18:09:14.432816
+5370,peer,5,Which stadium is the home of FC Barcelona?,"I think ""D. Allianz Arena"" might not be right. Try the others.",2026-07-29T18:09:15.269515
+5370,peer,5,Which stadium is the home of FC Barcelona?,"I think ""A. Santiago Bernabéu"" might not be right. Try the others.",2026-07-29T18:09:15.412464
+5370,peer,7,Which country won the 2020 UEFA European Championship?,"I think ""D. France"" might not be right. Try the others.",2026-07-29T18:09:20.866803
+5370,peer,7,Which country won the 2020 UEFA European Championship?,"I think ""C. Spain"" might not be right. Try the others.",2026-07-29T18:09:21.413623
+5370,peer,7,Which country won the 2020 UEFA European Championship?,"I think ""A. England"" might not be right. Try the others.",2026-07-29T18:09:21.601101
+5370,peer,9,Who was the top scorer in the 2022 FIFA World Cup?,"I think ""B. Lionel Messi"" might not be right. Try the others.",2026-07-29T18:09:26.231529
+5370,peer,9,Who was the top scorer in the 2022 FIFA World Cup?,"I think ""C. Neymar"" might not be right. Try the others.",2026-07-29T18:09:26.407375
+5370,peer,9,Who was the top scorer in the 2022 FIFA World Cup?,"I think ""D. Julián Álvarez"" might not be right. Try the others.",2026-07-29T18:09:26.593370
+5370,peer,9,Who was the top scorer in the 2022 FIFA World Cup?,"I think ""B. Lionel Messi"" might not be right. Try the others.",2026-07-29T18:09:28.751740
+5370,peer,9,Who was the top scorer in the 2022 FIFA World Cup?,"I think ""C. Neymar"" might not be right. Try the others.",2026-07-29T18:09:29.320475
+5370,peer,9,Who was the top scorer in the 2022 FIFA World Cup?,"I think ""D. Julián Álvarez"" might not be right. Try the others.",2026-07-29T18:09:30.708893
+9401,peer,0,Which club has won the most UEFA Champions League titles?,Maybe we can eliminate Liverpool? It doesn't fit.,2026-07-31T22:24:07.849410
+9401,peer,0,Which club has won the most UEFA Champions League titles?,I'm not convinced by AC Milan. What do you think?,2026-07-31T22:24:28.994786
+5389,peer,0,Which club has won the most English Premier League titles?,I think Manchester City might not be right. Let's skip it.,2026-07-31T22:34:57.448689
+5389,peer,1,Who is the top scorer in UEFA European Championship history?,Let's remove Antoine Griezmann from the options – it feels off.,2026-07-31T22:35:16.258804
+6152,peer,0,Which club has won the most UEFA Champions League titles?,I'm not convinced by AC Milan. What do you think?,2026-07-31T22:48:35.596558
+6152,peer,0,Which club has won the most UEFA Champions League titles?,I think Liverpool might not be right. Let's skip it.,2026-07-31T22:48:41.339094
+7252,peer,0,Which club has won the most UEFA Champions League titles?,I'm pretty sure AC Milan isn't correct. Let's work with the others – we're a team!,2026-08-07T19:51:03.862322
+7252,peer,0,Which club has won the most UEFA Champions League titles?,I've got a feeling Liverpool might be a trap. Let's leave it out – you're doing great!,2026-08-07T19:51:13.077134
+1135,peer,0,Which club has won the most English Premier League titles?,"Hmm, I'm not sure about Arsenal either. Let's skip it and focus on the others – what do you think?",2026-08-08T18:45:17.227996

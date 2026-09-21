@@ -1,0 +1,11 @@
+inside the quiz folder
+
+python app.py
+
+inside the user folder
+
+ngrok config add-authtoken 3FoslDcLqFRIVuukCNn7eRBL7Fy_4vteN2as2dZdBVjd72qdH
+
+ngrok http 5000
+
+

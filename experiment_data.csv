@@ -1,0 +1,16 @@
+participant_id,condition,question_set,score,help_count,comfort,manipulation_check,age,gender,timestamp
+,,,,,,,,,
+4989,tutor,B,5,6,4,teacher,25,M,2026-07-14T14:58:00.246134
+5743,tutor,B,5,6,2,teacher,26,M,2026-07-14T17:05:43.196664
+2007,peer,B,10,30,6,classmate,24,M,2026-07-19T18:56:46.922300
+5660,peer,A,8,0,6,classmate,24,M,2026-07-19T19:26:33.161376
+3938,peer,B,8,20,5,classmate,23,M,2026-07-19T19:32:07.547916
+9359,tutor,B,6,11,4,teacher,23,F,2026-07-25T21:04:36.467252
+7881,peer,B,4,0,6,classmate,25,M,2026-07-25T22:50:44.157020
+6909,peer,A,9,5,4,classmate,24,M,2026-07-25T22:53:55.783383
+1034,tutor,B,2,6,3,teacher,23,M,2026-07-26T00:38:35.879834
+8978,tutor,A,3,0,4,teacher,23,F,2026-07-29T18:07:35.673383
+1119,peer,B,4,8,6,classmate,25,M,2026-07-29T18:09:06.605595
+5370,peer,A,8,22,7,classmate,23,M,2026-07-29T18:09:49.188196
+7651,tutor,B,2,7,4,teacher,23,F,2026-07-29T18:10:43.935165
+6829,tutor,B,2,6,4,teacher,24,M,2026-07-29T18:13:48.806305

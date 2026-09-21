@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Robot Quiz – Football</title>
+    <style>
+        /* (All styles remain exactly as before – unchanged) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #e8edf5 0%, #d0d9e8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.20), 0 8px 20px rgba(0,0,0,0.06);
+            padding: 30px 30px 40px;
+        }
+        h2 { text-align: center; font-weight: 600; font-size: 2.2rem; color: #2c3e50; margin-bottom: 8px; }
+        .subtitle { text-align: center; color: #5a6f84; margin-bottom: 20px; font-size: 1.05rem; }
+        .robot-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 16px; }
+        .robot-avatar { font-size: 5.5rem; line-height: 1; transition: transform 0.3s; cursor: default; }
+        .robot-avatar.speaking { animation: speakAnim 0.6s infinite alternate; }
+        @keyframes speakAnim { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.05) rotate(-2deg); } }
+        .robot-bubble {
+            background: #fff; padding: 14px 24px; border-radius: 30px 30px 30px 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 80%; margin-top: 6px;
+            font-size: 1.1rem; color: #1e2a3a; border: 1px solid #e9edf3;
+            text-align: center; min-height: 3.8rem; display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s;
+        }
+        .robot-bubble .bubble-emoji { margin-right: 12px; font-size: 1.5rem; }
+        .instructions {
+            background: #f0f4fe; padding: 18px 24px; border-radius: 24px; margin: 12px 0 20px;
+            border-left: 6px solid #4a7db5;
+        }
+        .instructions p { font-weight: 600; margin-bottom: 6px; color: #1f3a5f; }
+        .instructions ul { padding-left: 22px; color: #2b4057; line-height: 1.7; }
+        .instructions ul ul { list-style-type: circle; font-size: 0.95rem; color: #3d5a78; }
+        .btn {
+            border: none; padding: 12px 30px; border-radius: 60px; font-size: 1.1rem;
+            font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:active { transform: scale(0.96); }
+        .btn-role { background: #fff; color: #1f3a5f; border: 2px solid #cbd6e6; }
+        .btn-role:hover { background: #eef4fe; border-color: #7b9dcf; transform: translateY(-2px); }
+        .btn-role .emoji { font-size: 1.5rem; }
+        .btn-start { background: #3b7bcf; color: white; font-size: 1.2rem; padding: 14px 44px; box-shadow: 0 6px 14px rgba(59,123,207,0.35); }
+        .btn-start:hover { background: #2c64b3; transform: scale(1.02); }
+        .btn-help { background: #f5b042; color: #2d2d2d; border: 2px solid #e6a03a; }
+        .btn-help:hover { background: #ed9f2e; }
+        .btn-submit { background: #2a9d8f; color: white; }
+        .btn-submit:hover { background: #21867a; }
+        .btn-submit-answer { background: #3b7bcf; color: white; }
+        .btn-submit-answer:hover { background: #2c64b3; }
+        .hidden { display: none !important; }
+        #quiz-area { margin-top: 8px; }
+        .question-number { font-weight: 600; color: #3f5a78; font-size: 0.95rem; }
+        .question-text { font-size: 1.5rem; font-weight: 500; color: #0b1f33; margin: 12px 0 16px; line-height: 1.4; }
+        .options {
+            display: flex; flex-direction: column; gap: 10px; margin: 10px 0 18px;
+        }
+        .option-card {
+            background: #f8fafd; border-radius: 18px; padding: 14px 20px;
+            border: 2px solid #e2e9f2; cursor: pointer; transition: all 0.15s;
+            font-size: 1.1rem; display: flex; align-items: center; gap: 14px;
+        }
+        .option-card:hover:not(.disabled) { background: #e9eff8; border-color: #8fb0d6; }
+        .option-card.selected { background: #d4e2fc; border-color: #3b7bcf; box-shadow: 0 0 0 3px rgba(59,123,207,0.2); }
+        .option-card.disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; text-decoration: line-through; }
+        .option-card .letter { font-weight: 700; color: #1f3a5f; width: 28px; }
+        .option-card input[type="radio"] { display: none; }
+        .mode-label { background: #dbe4f0; padding: 6px 16px; border-radius: 30px; display: inline-block; font-size: 0.85rem; font-weight: 600; color: #1f3a5f; margin: 6px 0 10px; }
+        .action-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin: 8px 0 12px; }
+        .status { background: #eef3fa; padding: 12px 18px; border-radius: 24px; margin: 12px 0 6px; font-size: 0.98rem; color: #1e3b5c; border-left: 5px solid #7b9dcf; }
+        .feedback { font-weight: 600; font-size: 1.2rem; margin: 8px 0 4px; padding: 6px 0; }
+        .feedback.correct { color: #1e7e34; }
+        .feedback.wrong { color: #b33c3c; }
+        .questionnaire { margin-top: 10px; }
+        .questionnaire h3 { font-size: 1.6rem; color: #1e3a5f; margin-bottom: 20px; }
+        .q-group { margin-bottom: 18px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
+        .q-group label { min-width: 140px; font-weight: 500; color: #1f3a5f; }
+        .q-group select, .q-group input { padding: 10px 16px; border-radius: 30px; border: 2px solid #c6d4e6; background: white; font-size: 1rem; flex: 1 1 180px; }
+        .q-group input:focus, .q-group select:focus { outline: none; border-color: #3b7bcf; }
+        @media (max-width: 550px) {
+            .container { padding: 20px; }
+            .robot-avatar { font-size: 4rem; }
+            .robot-bubble { font-size: 0.95rem; padding: 10px 16px; }
+            .question-text { font-size: 1.2rem; }
+            .role-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .action-row { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>⚽ Robot Quiz</h2>
+    <p class="subtitle">European Football Challenge</p>
+
+    <div class="robot-area">
+        <div class="robot-avatar" id="robotAvatar">🤖</div>
+        <div class="robot-bubble" id="robotBubble">
+            <span class="bubble-emoji">💬</span>
+            <span id="bubbleText">Welcome! Your robot partner will be randomly assigned.</span>
+        </div>
+    </div>
+
+    <div id="intro">
+        <div class="instructions">
+            <p>📘 How this quiz works</p>
+            <ul>
+                <li>You'll answer <strong>10 multiple‑choice</strong> questions about European football.</li>
+                <li><strong>Voice</strong> questions: the robot reads them – you <strong>say</strong> the answer (A–D).</li>
+                <li><strong>Typing</strong> questions: read on screen – you <strong>click</strong> an option and press Submit.</li>
+                <li>Click <strong>"Ask for Help"</strong> anytime:
+                    <ul>
+                        <li><strong>Peer</strong> – helps you find the correct answer, gives a second chance.</li>
+                        <li><strong>Tutor</strong> – gives you a clue.</li>
+                    </ul>
+                </li>
+                <li>After the quiz, a short <strong>questionnaire</strong>.</li>
+            </ul>
+        </div>
+
+        <!-- Show assigned role -->
+        <p style="font-weight:500; text-align:center; font-size:1.1rem; margin-bottom:8px;">
+            Your robot companion has been randomly assigned:
+            <span id="assignedRoleDisplay" style="font-weight:bold; color:#3b7bcf;"></span>
+        </p>
+        <div style="text-align:center; margin-top:4px;">
+            <button id="startBtn" class="btn btn-start" onclick="startQuiz()">🚀 Start Quiz</button>
+        </div>
+    </div>
+
+    <div id="quizArea" class="hidden">
+        <div class="question-number" id="qNumber"></div>
+        <div class="question-text" id="qText"></div>
+        <div class="options" id="optionsContainer"></div>
+        <div class="mode-label" id="modeLabel">Mode: —</div>
+        <div class="action-row">
+            <button class="btn btn-submit-answer" id="submitAnswerBtn" onclick="submitSelectedOption()">✅ Submit</button>
+            <button class="btn btn-help" onclick="askHelp()">❓ Ask for Help</button>
+        </div>
+        <div class="status" id="statusMsg">Ready</div>
+        <div class="feedback" id="feedbackMsg"></div>
+    </div>
+
+    <div id="questionnaire" class="hidden">
+        <h3>📋 Post‑task Questionnaire</h3>
+        <div class="q-group">
+            <label>Comfort (1‑7):</label>
+            <select id="comfort">
+                <option value="1">1 – Very uncomfortable</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4" selected>4 – Neutral</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7 – Very comfortable</option>
+            </select>
+        </div>
+        <div class="q-group">
+            <label>Robot acted like:</label>
+            <select id="manipulation">
+                <option value="classmate">Classmate</option>
+                <option value="teacher">Teacher</option>
+            </select>
+        </div>
+        <div class="q-group">
+            <label>Age:</label>
+            <input type="number" id="age" min="18" max="100" />
+        </div>
+        <div class="q-group">
+            <label>Gender:</label>
+            <input type="text" id="gender" placeholder="M / F / Other" />
+        </div>
+        <button class="btn btn-submit" onclick="submitData()" style="margin-top:8px;">✅ Submit Results</button>
+    </div>
+</div>
+
+<script>
+    // ─── DATA FROM FLASK ──────────────────────────────────────────────
+    const participantId = {{ participant_id }};
+    const questions = {{ questions | tojson }};
+    const modeMap = {{ mode_map | tojson }};
+    const questionSet = "{{ question_set }}";
+    const condition = "{{ condition }}";   // 'peer' or 'tutor'
+
+    // ─── EXPLANATION TEXTS (spoken before the quiz) ──────────────────
+    const TUTOR_EXPLANATION = 
+        "Good day, student. Today we will explore the fascinating history of European football. " +
+        "From the early days of the sport to the modern era, you will be tested on key facts, records, and iconic moments. " +
+        "This quiz is not just about right or wrong answers; it is a learning opportunity. " +
+        "I will be here to guide you, but I expect you to think carefully. " +
+        "When you need help, I will give you a clue to point you in the right direction. " +
+        "Let us begin this educational journey. Are you ready?";
+
+    const PEER_EXPLANATION = 
+        "Hey! So you're into football? Me too! I love learning about all the amazing teams and players. " +
+        "I've put together some cool questions for you – stuff like who won the Champions League, who scored the most goals, and some fun facts. " +
+        "Don't worry if you don't know everything – we'll figure it out together. " +
+        "I'm here to help you think through the answers, and if you're stuck, I'll give you a hint. " +
+        "And the best part? If you get it wrong the first time, you get another chance to try again. " +
+        "We're in this together, so let's have some fun and see what we can learn. Ready? Let's do this!";
+
+    // ─── STATE ─────────────────────────────────────────────────────────
+    let currentIndex = 0;
+    let score = 0;
+    let helpCount = 0;
+    let currentMode = '';
+    let recognition = null;
+    let isListening = false;
+    let selectedOption = null;
+    let retryCount = 0;
+    let isExplaining = false;    // to prevent interaction during explanation
+
+    const robotAvatar = document.getElementById('robotAvatar');
+    const bubbleText = document.getElementById('bubbleText');
+    const statusMsg = document.getElementById('statusMsg');
+    const feedbackMsg = document.getElementById('feedbackMsg');
+    const assignedDisplay = document.getElementById('assignedRoleDisplay');
+
+    // ─── DISPLAY ASSIGNED ROLE ──────────────────────────────────────
+    const roleName = condition === 'peer' ? 'Peer (Study Buddy)' : 'Tutor (Instructor)';
+    assignedDisplay.textContent = roleName;
+    assignedDisplay.style.color = condition === 'peer' ? '#4A90D9' : '#D94A4A';
+
+    // ─── SPEECH ──────────────────────────────────────────────────────
+    function speak(text, onEnd = null) {
+        if (!window.speechSynthesis) {
+            if (onEnd) onEnd();
+            return;
+        }
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.95;  // Slightly slower for clarity
+        utterance.pitch = 1;
+        robotAvatar.classList.add('speaking');
+        if (onEnd) {
+            utterance.onend = () => {
+                robotAvatar.classList.remove('speaking');
+                onEnd();
+            };
+        } else {
+            utterance.onend = () => robotAvatar.classList.remove('speaking');
+        }
+        speechSynthesis.speak(utterance);
+    }
+
+    function setBubble(text, emoji = '💬') {
+        bubbleText.textContent = text;
+        document.querySelector('.bubble-emoji').textContent = emoji;
+    }
+
+    // ─── SPEECH RECOGNITION SETUP ────────────────────────────────────
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript.toUpperCase();
+            for (let letter of ['A', 'B', 'C', 'D']) {
+                if (transcript.includes(letter)) {
+                    selectOption(letter);
+                    submitSelectedOption();
+                    return;
+                }
+            }
+            statusMsg.innerText = '🔊 Could not recognise letter. Please click an option.';
+            setBubble("Sorry, I didn't catch that. Click your answer.", '😕');
+        };
+        recognition.onerror = function() {
+            statusMsg.innerText = '🔊 Speech error. Please click an option.';
+            setBubble("Mic issue – click your answer.", '🎤');
+        };
+    } else {
+        setBubble("Your browser doesn't support voice. Use the options below.", '⚠️');
+    }
+
+    // ─── UTILITY ──────────────────────────────────────────────────────
+    function getModeForQuestion(index) {
+        const modes = modeMap[index];
+        return condition === 'tutor' ? modes[0] : modes[1];
+    }
+
+    // ─── START ─────────────────────────────────────────────────────────
+    function startQuiz() {
+        // Hide intro
+        document.getElementById('intro').classList.add('hidden');
+        // Show quiz area but keep it hidden? We'll show after explanation.
+        // Actually we need to display the bubble with explanation.
+        // We'll set the explanation text.
+        isExplaining = true;
+        const explanation = condition === 'peer' ? PEER_EXPLANATION : TUTOR_EXPLANATION;
+        setBubble(explanation, condition === 'peer' ? '🤝' : '📚');
+        // Speak the explanation, and after it finishes, show the first question.
+        speak(explanation, () => {
+            isExplaining = false;
+            // Now show the quiz area and first question
+            document.getElementById('quizArea').classList.remove('hidden');
+            showQuestion();
+        });
+    }
+
+    // ─── SHOW QUESTION ────────────────────────────────────────────────
+    function showQuestion() {
+        if (isExplaining) return; // prevent showing during explanation
+        retryCount = 0;
+        if (currentIndex >= questions.length) {
+            finishQuiz();
+            return;
+        }
+
+        const q = questions[currentIndex];
+        document.getElementById('qNumber').innerText = `Question ${currentIndex+1} of ${questions.length}`;
+        document.getElementById('qText').innerText = q.q;
+
+        const container = document.getElementById('optionsContainer');
+        container.innerHTML = '';
+        const letters = ['A', 'B', 'C', 'D'];
+        q.options.forEach((opt, idx) => {
+            const div = document.createElement('div');
+            div.className = 'option-card';
+            div.dataset.letter = letters[idx];
+            div.innerHTML = `<span class="letter">${letters[idx]}.</span> ${opt}`;
+            div.addEventListener('click', function() {
+                selectOption(letters[idx]);
+            });
+            container.appendChild(div);
+        });
+
+        selectedOption = null;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+
+        currentMode = getModeForQuestion(currentIndex);
+        document.getElementById('modeLabel').innerText = `📢 Mode: ${currentMode.toUpperCase()}`;
+        feedbackMsg.innerText = '';
+        feedbackMsg.className = 'feedback';
+        statusMsg.innerText = '';
+
+        if (currentMode === 'voice') {
+            const text = `Question ${currentIndex+1}: ${q.q}. Options: A. ${q.options[0]}, B. ${q.options[1]}, C. ${q.options[2]}, D. ${q.options[3]}`;
+            setBubble("Listening for your answer...", '🎧');
+            speak(text);
+            statusMsg.innerText = '🎤 Listening... Say A, B, C, or D. Or click an option.';
+            setTimeout(() => {
+                if (recognition) {
+                    try { recognition.start(); isListening = true; } catch(e) {}
+                }
+            }, 3500);
+        } else {
+            statusMsg.innerText = '👆 Click an option, then click Submit.';
+            setBubble(`Question ${currentIndex+1}: ${q.q}`, '📝');
+            speak(`Question ${currentIndex+1}: ${q.q}`);
+        }
+    }
+
+    function selectOption(letter) {
+        if (!letter) return;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        const cards = document.querySelectorAll('.option-card');
+        for (let card of cards) {
+            if (card.dataset.letter === letter) {
+                card.classList.add('selected');
+                selectedOption = letter;
+                break;
+            }
+        }
+    }
+
+    function submitSelectedOption() {
+        if (isExplaining) return; // ignore during explanation
+        if (!selectedOption) {
+            statusMsg.innerText = '⚠️ Please select an option first.';
+            setBubble("Please choose an answer.", '👆');
+            return;
+        }
+        if (isListening) {
+            try { recognition.stop(); } catch(e) {}
+            isListening = false;
+        }
+        handleAnswer(selectedOption);
+    }
+
+    // ─── HANDLE ANSWER ──────────────────────────────────────────────
+    function handleAnswer(answer) {
+        const correct = questions[currentIndex].correct;
+        let isCorrect = answer === correct;
+
+        if (isCorrect) {
+            score++;
+            feedbackMsg.innerText = '✅ Correct!';
+            feedbackMsg.className = 'feedback correct';
+            setBubble("Great job! Let's move on.", '😊');
+            speak('Correct!');
+            currentIndex++;
+            document.querySelectorAll('.option-card').forEach(c => c.classList.add('disabled'));
+            setTimeout(showQuestion, 2500);
+            return;
+        }
+
+        // --- Incorrect answer ---
+        if (condition === 'peer' && retryCount === 0) {
+            retryCount = 1;
+            feedbackMsg.innerText = '❌ Not quite! Try again.';
+            feedbackMsg.className = 'feedback wrong';
+            setBubble("Not quite! Give it another shot.", '🤔');
+            speak('Not quite! Try again.');
+
+            const cards = document.querySelectorAll('.option-card');
+            cards.forEach(card => {
+                card.classList.remove('disabled');
+                if (card.dataset.helped === 'true') {
+                    card.classList.add('disabled');
+                }
+            });
+            selectedOption = null;
+            cards.forEach(c => c.classList.remove('selected'));
+            statusMsg.innerText = '👆 Choose another option and click Submit.';
+            return;
+        }
+
+        // --- Second wrong or tutor ---
+        const feedbackText = `Incorrect. The correct answer is ${correct}.`;
+        feedbackMsg.innerText = `❌ ${feedbackText}`;
+        feedbackMsg.className = 'feedback wrong';
+        setBubble("Don't worry, keep going!", '🤔');
+        speak(feedbackText);
+
+        currentIndex++;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.add('disabled'));
+        setTimeout(showQuestion, 2500);
+    }
+
+    // ─── ASK FOR HELP ─────────────────────────────────────────────────
+    function askHelp() {
+        if (isExplaining || currentIndex >= questions.length) return;
+        helpCount++;
+        const q = questions[currentIndex];
+        const idx = currentIndex;
+
+        setBubble("Let me think... 🤔", '🧠');
+        robotAvatar.classList.add('speaking');
+
+        fetch('/get_hint', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                question_index: idx,
+                condition: condition,
+                question: q.q,
+                options: q.options,
+                correct: q.correct,
+                clue: q.clue || "Think carefully."
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            robotAvatar.classList.remove('speaking');
+            const hint = data.hint;
+            setBubble(hint, '💡');
+            speak(hint);
+            statusMsg.innerText = condition === 'peer' ? '💡 Peer hint given.' : '💡 Tutor clue given.';
+
+            if (condition === 'peer' && data.remove_option) {
+                const cards = document.querySelectorAll('.option-card');
+                for (let card of cards) {
+                    const optionText = card.textContent.replace(/^[A-D]\.\s*/, '').trim();
+                    if (optionText === data.remove_option) {
+                        card.classList.add('disabled');
+                        card.dataset.helped = 'true';
+                        break;
+                    }
+                }
+                fetch('/log_help', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        participant_id: participantId,
+                        condition: condition,
+                        question_index: idx,
+                        question_text: q.q,
+                        hint: hint
+                    })
+                }).catch(err => console.error('Help log error:', err));
+            }
+        })
+        .catch(err => {
+            console.error('Error fetching hint:', err);
+            setBubble("Sorry, I'm having trouble thinking. Try again!", '😵');
+            robotAvatar.classList.remove('speaking');
+        });
+    }
+
+    // ─── FINISH & SUBMIT ──────────────────────────────────────────────
+    function finishQuiz() {
+        document.getElementById('quizArea').classList.add('hidden');
+        document.getElementById('questionnaire').classList.remove('hidden');
+        setBubble("Quiz done! Please fill out the questionnaire.", '📋');
+        speak('You have completed the quiz. Please fill out the questionnaire.');
+    }
+
+    function submitData() {
+        const comfort = document.getElementById('comfort').value;
+        const manipulation = document.getElementById('manipulation').value;
+        const age = document.getElementById('age').value;
+        const gender = document.getElementById('gender').value;
+
+        const data = {
+            participant_id: participantId,
+            condition: condition,
+            question_set: questionSet,
+            score: score,
+            help_count: helpCount,
+            comfort: comfort,
+            manipulation_check: manipulation,
+            age: age,
+            gender: gender
+        };
+
+        fetch('/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(() => {
+            alert('✅ Thank you! Your data has been saved.');
+            window.location.reload();
+        })
+        .catch(err => {
+            alert('❌ Error saving data. Please contact the experimenter.');
+            console.error(err);
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !document.getElementById('questionnaire').classList.contains('hidden') === false) {
+            submitSelectedOption();
+        }
+    });
+
+    // Initial bubble message (already set in HTML)
+    setBubble("Welcome! Your robot partner will be randomly assigned.", '👋');
+</script>
+</body>
+</html>
