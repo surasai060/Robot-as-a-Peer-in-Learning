@@ -131,7 +131,7 @@ people felt comfortable because they were doing well, not necessarily because th
 
 ##  Credits
 
-**Author**: Likhith Kumar Shivakumar  
+**Author**: SAI SURA  
 **Course**: User Studies in Intelligent Systems  
 **University**: Bielefeld University  
 **Year**: 2026
